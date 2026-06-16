@@ -11,9 +11,9 @@ function PublicLayout() {
         <nav>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
-          <NavLink to="/about#services">Services</NavLink>
+          {/* <NavLink to="/about#services">Services</NavLink>
           <NavLink to="/about#why-choose-us">Why Choose Us</NavLink>
-          <NavLink to="/about#testimonials">Testimonials</NavLink>
+          <NavLink to="/about#testimonials">Testimonials</NavLink> */}
           <NavLink to="/contact">Contact</NavLink>
           <NavLink to="/properties">Properties</NavLink>
           {user && <NavLink to="/dashboard">Dashboard</NavLink>}

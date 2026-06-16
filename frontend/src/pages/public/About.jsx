@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createLead } from '../../services/leadService';
 
 const aboutBlocks = [
-  ['Company Overview', 'Shilpa helps real estate teams present properties, capture qualified customers, and manage every lead from first message to conversion.'],
+  // ['Company Overview', 'Shilpa helps real estate teams present properties, capture qualified customers, and manage every lead from first message to conversion.'],
   ['Mission', 'To make property discovery and customer follow-up simpler, faster, and more transparent for buyers, owners, and managers.'],
   ['Vision', 'To become a dependable digital growth partner for modern real estate businesses.'],
   ['Our Values', 'Trust, clarity, service quality, accountability, and consistent communication guide every customer interaction.'],
