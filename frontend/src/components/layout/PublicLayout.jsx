@@ -10,8 +10,12 @@ function PublicLayout() {
         <Link to="/" className="brand">UrbanNest</Link>
         <nav>
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/properties">Properties</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/about#services">Services</NavLink>
+          <NavLink to="/about#why-choose-us">Why Choose Us</NavLink>
+          <NavLink to="/about#testimonials">Testimonials</NavLink>
           <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="/properties">Properties</NavLink>
           {user && <NavLink to="/dashboard">Dashboard</NavLink>}
           {isAdmin && <NavLink to="/admin">Admin</NavLink>}
           {user ? <button className="link-button" onClick={logout}>Logout</button> : <NavLink to="/login">Login</NavLink>}
@@ -27,7 +31,10 @@ function PublicLayout() {
         </div>
         <nav>
           <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/about#services">Services</Link>
           <Link to="/properties">Properties</Link>
+          <Link to="/contact">Contact</Link>
           {isAdmin && <Link to="/admin">Admin</Link>}
         </nav>
       </footer>

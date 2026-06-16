@@ -75,3 +75,36 @@ npm run dev
 
 Frontend runs on `http://localhost:5173`; backend runs on `http://localhost:5000`.
 >>>>>>> Stashed changes
+
+## Shilpa - About & Customer Leads Management
+
+This MERN module adds a public About page, Services, Why Choose Us, Testimonials, Contact lead form, and an admin customer leads dashboard.
+
+### Lead APIs
+
+- `POST /api/leads` public lead form
+- `GET /api/leads` admin list with `search` and `status` filters
+- `GET /api/leads/:id` admin customer details
+- `PUT /api/leads/:id` admin edit/status update
+- `DELETE /api/leads/:id` admin delete
+- `POST /api/leads/:id/follow-ups` admin follow-up notes and history
+
+### Pages
+
+- `/about` public About Company page with lead form
+- `/admin/leads` lead management dashboard
+- `/admin/leads/:id` customer details and follow-up history
+
+### Run
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+```bash
+cd frontend
+npm install
+npm run dev
+```

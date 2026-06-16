@@ -3,6 +3,9 @@ import PublicLayout from '../components/layout/PublicLayout';
 import ProtectedRoute from './ProtectedRoute';
 import AddProperty from '../pages/admin/AddProperty';
 import AdminDashboard from '../pages/admin/AdminDashboard';
+import LeadDetails from '../pages/admin/LeadDetails';
+import LeadManagement from '../pages/admin/LeadManagement';
+import About from '../pages/public/About';
 import Dashboard from '../pages/public/Dashboard';
 import Contact from '../pages/public/Contact';
 import Home from '../pages/public/Home';
@@ -18,6 +21,7 @@ function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
         <Route path="/properties" element={<PropertyList />} />
         <Route path="/properties/:id" element={<PropertyDetails />} />
         <Route path="/contact" element={<Contact />} />
@@ -26,6 +30,8 @@ function AppRoutes() {
         </Route>
         <Route element={<ProtectedRoute admin />}>
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/leads" element={<LeadManagement />} />
+          <Route path="/admin/leads/:id" element={<LeadDetails />} />
           <Route path="/admin/properties/add" element={<AddProperty />} />
         </Route>
       </Route>

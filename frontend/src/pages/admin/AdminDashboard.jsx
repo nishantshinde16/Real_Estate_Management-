@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropertyCard from '../../components/ui/PropertyCard';
 import { getAllInquiries } from '../../services/inquiryService';
+import { getLeads } from '../../services/leadService';
 import { deleteProperty, getProperties } from '../../services/propertyService';
 import { getAdminStats, getUsers } from '../../services/userService';
 
@@ -10,18 +11,21 @@ function AdminDashboard() {
   const [users, setUsers] = useState([]);
   const [properties, setProperties] = useState([]);
   const [inquiries, setInquiries] = useState([]);
+  const [leads, setLeads] = useState([]);
 
   const load = async () => {
-    const [statsRes, usersRes, propertiesRes, inquiriesRes] = await Promise.all([
+    const [statsRes, usersRes, propertiesRes, inquiriesRes, leadsRes] = await Promise.all([
       getAdminStats(),
       getUsers(),
       getProperties(),
       getAllInquiries(),
+      getLeads(),
     ]);
     setStats(statsRes.data);
     setUsers(usersRes.data);
     setProperties(propertiesRes.data);
     setInquiries(inquiriesRes.data);
+    setLeads(leadsRes.data);
   };
 
   useEffect(() => {
@@ -37,12 +41,26 @@ function AdminDashboard() {
     <section className="section">
       <div className="section-heading">
         <h1>Admin Dashboard</h1>
-        <Link className="btn" to="/admin/properties/add">Add Property</Link>
+        <div className="actions">
+          <Link className="btn-outline" to="/admin/leads">Manage Leads</Link>
+          <Link className="btn" to="/admin/properties/add">Add Property</Link>
+        </div>
       </div>
       <div className="stats-grid">
         <div><strong>{stats.users}</strong><p>Users</p></div>
         <div><strong>{stats.properties}</strong><p>Properties</p></div>
         <div><strong>{stats.inquiries}</strong><p>Inquiries</p></div>
+        <div><strong>{leads.length}</strong><p>Customer Leads</p></div>
+      </div>
+      <h2>Lead Status Tracking</h2>
+      <div className="table-list">
+        {leads.slice(0, 4).map((lead) => (
+          <div key={lead._id}>
+            <strong>{lead.fullName}</strong>
+            <span>{lead.email}</span>
+            <span className={`status-pill status-${lead.status.toLowerCase().replace('-', '')}`}>{lead.status}</span>
+          </div>
+        ))}
       </div>
       <h2>Manage Properties</h2>
       <div className="property-grid">

@@ -17,6 +17,7 @@ app.get('/api/health', (req, res) => res.json({ message: 'Real Estate API is run
 app.use('/api/auth', require('./modules/auth/routes'));
 app.use('/api/properties', require('./modules/properties/routes'));
 app.use('/api/inquiries', require('./modules/inquiries/routes'));
+app.use('/api/leads', require('./modules/leads/routes'));
 app.use('/api/users', require('./modules/users/routes'));
 
 app.use(errorHandler);
