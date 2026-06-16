@@ -404,7 +404,17 @@ textarea {
   max-width: 960px;
 }
 
+.form-grid label {
+  color: var(--muted);
+  display: grid;
+  font-size: 0.88rem;
+  font-weight: 800;
+  gap: 8px;
+}
+
 .form-grid textarea,
+.form-grid .image-upload,
+.form-grid .error,
 .form-grid button {
   grid-column: 1 / -1;
 }
@@ -847,6 +857,213 @@ textarea {
   padding: 0;
 }
 
+.admin-page {
+  margin-top: 0;
+}
+
+.admin-shell {
+  align-items: start;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 260px minmax(0, 1fr);
+}
+
+.admin-sidebar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 22px;
+  padding: 22px;
+  position: sticky;
+  top: 88px;
+}
+
+.admin-sidebar nav {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-sidebar nav a {
+  border-radius: 8px;
+  color: var(--muted);
+  font-weight: 900;
+  padding: 11px 12px;
+}
+
+.admin-sidebar nav a:hover {
+  background: var(--surface-soft);
+  color: var(--primary);
+}
+
+.admin-content {
+  min-width: 0;
+}
+
+.admin-stat-grid strong {
+  color: var(--primary);
+  font-size: 2.2rem;
+}
+
+.admin-list-panel,
+.confirm-modal,
+.image-upload__drop {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.admin-list-panel {
+  margin-top: 24px;
+  padding: 22px;
+}
+
+.property-table {
+  display: grid;
+  gap: 10px;
+}
+
+.property-table__head,
+.property-table__row {
+  align-items: center;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(240px, 1.5fr) 130px 140px 150px minmax(220px, auto);
+}
+
+.property-table__head {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 900;
+  padding: 0 16px 4px;
+}
+
+.property-table__row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.property-table__property {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  min-width: 0;
+}
+
+.property-table__property img {
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  object-fit: cover;
+  width: 72px;
+}
+
+.property-table__property div {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.property-table__property span,
+.property-table__row > span {
+  color: var(--muted);
+}
+
+.modal-backdrop {
+  align-items: center;
+  background: rgba(15, 23, 42, 0.48);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 18px;
+  position: fixed;
+  z-index: 30;
+}
+
+.confirm-modal {
+  display: grid;
+  gap: 14px;
+  max-width: 440px;
+  padding: 24px;
+  width: 100%;
+}
+
+.confirm-modal h2,
+.confirm-modal p {
+  margin: 0;
+}
+
+.confirm-modal p {
+  color: var(--muted);
+}
+
+.image-upload {
+  display: grid;
+  gap: 12px;
+}
+
+.image-upload__drop {
+  cursor: pointer;
+  display: grid;
+  gap: 6px;
+  padding: 18px;
+}
+
+.image-upload__drop span {
+  color: var(--text);
+  font-weight: 900;
+}
+
+.image-upload__drop small {
+  color: var(--muted);
+}
+
+.image-upload__drop input {
+  margin-top: 8px;
+}
+
+.image-upload__preview {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+.image-upload__preview figure {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.image-upload__preview img {
+  aspect-ratio: 4 / 3;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.image-upload__preview button,
+.image-upload__preview figcaption {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 900;
+  padding: 9px;
+  text-align: left;
+  width: 100%;
+}
+
+.image-upload__preview button {
+  color: var(--danger);
+  cursor: pointer;
+}
+
 @media (max-width: 920px) {
   .about-grid,
   .lead-section,
@@ -854,8 +1071,23 @@ textarea {
   .lead-detail-grid,
   .lead-filters,
   .booking-workspace,
-  .progress-tracker {
+  .progress-tracker,
+  .admin-shell,
+  .property-table__head,
+  .property-table__row {
     grid-template-columns: 1fr;
+  }
+
+  .admin-sidebar {
+    position: static;
+  }
+
+  .property-table__head {
+    display: none;
+  }
+
+  .property-table__row {
+    align-items: start;
   }
 }
 
@@ -864,4 +1096,21 @@ textarea {
     min-height: 520px;
     padding: 56px 16px;
   }
+}
+
+
+
+
+.actions .btn {
+  background: var(--primary);
+  color: #ffffff !important;
+  border: 1px solid var(--primary);
+}
+
+.actions .btn:hover {
+  color: #ffffff !important;
+}
+
+.actions a {
+  text-decoration: none;
 }
