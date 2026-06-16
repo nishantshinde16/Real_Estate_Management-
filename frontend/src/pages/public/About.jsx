@@ -46,7 +46,7 @@ function About() {
     <>
       <section className="about-hero">
         <div>
-          <p className="eyebrow">Shilpa - About & Customer Leads Management</p>
+          
           <h1>Real estate customer growth, organized from first visit to follow-up.</h1>
           <p>Build confidence with a polished company profile and capture every customer enquiry in a trackable lead pipeline.</p>
         </div>
