@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropertyCard from '../../components/ui/PropertyCard';
+import { getBookings } from '../../services/bookingService';
 import { getAllInquiries } from '../../services/inquiryService';
 import { getLeads } from '../../services/leadService';
 import { deleteProperty, getProperties } from '../../services/propertyService';
@@ -12,20 +13,23 @@ function AdminDashboard() {
   const [properties, setProperties] = useState([]);
   const [inquiries, setInquiries] = useState([]);
   const [leads, setLeads] = useState([]);
+  const [bookings, setBookings] = useState([]);
 
   const load = async () => {
-    const [statsRes, usersRes, propertiesRes, inquiriesRes, leadsRes] = await Promise.all([
+    const [statsRes, usersRes, propertiesRes, inquiriesRes, leadsRes, bookingsRes] = await Promise.all([
       getAdminStats(),
       getUsers(),
       getProperties(),
       getAllInquiries(),
       getLeads(),
+      getBookings(),
     ]);
     setStats(statsRes.data);
     setUsers(usersRes.data);
     setProperties(propertiesRes.data);
     setInquiries(inquiriesRes.data);
     setLeads(leadsRes.data);
+    setBookings(bookingsRes.data);
   };
 
   useEffect(() => {
@@ -43,6 +47,7 @@ function AdminDashboard() {
         <h1>Admin Dashboard</h1>
         <div className="actions">
           <Link className="btn-outline" to="/admin/leads">Manage Leads</Link>
+          <Link className="btn-outline" to="/admin/bookings">Manage Bookings</Link>
           <Link className="btn" to="/admin/properties/add">Add Property</Link>
         </div>
       </div>
@@ -51,6 +56,17 @@ function AdminDashboard() {
         <div><strong>{stats.properties}</strong><p>Properties</p></div>
         <div><strong>{stats.inquiries}</strong><p>Inquiries</p></div>
         <div><strong>{leads.length}</strong><p>Customer Leads</p></div>
+        <div><strong>{bookings.length}</strong><p>Bookings</p></div>
+      </div>
+      <h2>Booking History</h2>
+      <div className="table-list">
+        {bookings.slice(0, 4).map((booking) => (
+          <div key={booking._id}>
+            <strong>{booking.customerName}</strong>
+            <span>{booking.propertyId?.title || 'Property'}</span>
+            <span className={`status-pill status-${booking.status.toLowerCase()}`}>{booking.status}</span>
+          </div>
+        ))}
       </div>
       <h2>Lead Status Tracking</h2>
       <div className="table-list">

@@ -3,9 +3,13 @@ import PublicLayout from '../components/layout/PublicLayout';
 import ProtectedRoute from './ProtectedRoute';
 import AddProperty from '../pages/admin/AddProperty';
 import AdminDashboard from '../pages/admin/AdminDashboard';
+import BookingManagement from '../pages/admin/BookingManagement';
 import LeadDetails from '../pages/admin/LeadDetails';
 import LeadManagement from '../pages/admin/LeadManagement';
+import MyBookings from '../pages/client/MyBookings';
 import About from '../pages/public/About';
+import BookingConfirmation from '../pages/public/BookingConfirmation';
+import BookingPage from '../pages/public/BookingPage';
 import Dashboard from '../pages/public/Dashboard';
 import Contact from '../pages/public/Contact';
 import Home from '../pages/public/Home';
@@ -27,9 +31,13 @@ function AppRoutes() {
         <Route path="/contact" element={<Contact />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/bookings" element={<BookingPage />} />
+          <Route path="/booking-confirmation/:id" element={<BookingConfirmation />} />
+          <Route path="/my-bookings" element={<MyBookings />} />
         </Route>
         <Route element={<ProtectedRoute admin />}>
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/bookings" element={<BookingManagement />} />
           <Route path="/admin/leads" element={<LeadManagement />} />
           <Route path="/admin/leads/:id" element={<LeadDetails />} />
           <Route path="/admin/properties/add" element={<AddProperty />} />

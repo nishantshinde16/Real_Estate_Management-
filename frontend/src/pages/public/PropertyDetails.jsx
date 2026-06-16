@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { createInquiry } from '../../services/inquiryService';
 import { getProperty, toggleSavedProperty } from '../../services/propertyService';
@@ -39,7 +39,12 @@ function PropertyDetails() {
           <span>{property.bathrooms} Bathrooms</span>
           <span>{property.area} sq ft</span>
         </div>
-        {user && <button className="btn btn-outline" onClick={() => toggleSavedProperty(id)}>Save Property</button>}
+        {user && (
+          <div className="actions">
+            <button className="btn btn-outline" onClick={() => toggleSavedProperty(id)}>Save Property</button>
+            <Link className="btn" to={`/bookings?propertyId=${id}`}>Book Property</Link>
+          </div>
+        )}
         <form className="inquiry-form" onSubmit={sendInquiry}>
           <h3>Send Inquiry</h3>
           {status && <p className="success">{status}</p>}

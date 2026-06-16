@@ -17,6 +17,7 @@ function PropertyCard({ property, onDelete }) {
         </div>
         <div className="actions">
           <Link className="btn btn-outline" to={`/properties/${property._id}`}>View</Link>
+          <Link className="btn" to={`/bookings?propertyId=${property._id}`}>Book</Link>
           {onDelete && <button className="btn btn-danger" onClick={() => onDelete(property._id)}>Delete</button>}
         </div>
       </div>

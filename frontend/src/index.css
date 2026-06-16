@@ -740,6 +740,107 @@ textarea {
   color: #5b21b6;
 }
 
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-completed {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.booking-workspace {
+  align-items: start;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) 360px;
+}
+
+.booking-summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 12px;
+  padding: 24px;
+}
+
+.booking-summary h1,
+.booking-summary h2,
+.booking-summary p {
+  margin: 0;
+}
+
+.booking-summary span,
+.booking-meta span {
+  color: var(--muted);
+}
+
+.booking-summary strong {
+  font-size: 1.2rem;
+}
+
+.booking-admin-panel {
+  margin-top: 28px;
+}
+
+.confirmation-page {
+  display: grid;
+  place-items: center;
+}
+
+.confirmation-page .booking-summary {
+  width: min(100%, 720px);
+}
+
+.booking-meta,
+.progress-tracker {
+  display: grid;
+  gap: 10px;
+}
+
+.booking-card-heading {
+  margin-bottom: 0;
+}
+
+.progress-tracker {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.progress-tracker span {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  font-weight: 900;
+  padding: 12px;
+  text-align: center;
+}
+
+.progress-tracker .done {
+  background: #dcfce7;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.progress-tracker .blocked {
+  background: #fee2e2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+
 .lead-detail-grid {
   grid-template-columns: 1fr 1fr;
   margin-top: 0;
@@ -751,7 +852,9 @@ textarea {
   .lead-section,
   .lead-workspace,
   .lead-detail-grid,
-  .lead-filters {
+  .lead-filters,
+  .booking-workspace,
+  .progress-tracker {
     grid-template-columns: 1fr;
   }
 }

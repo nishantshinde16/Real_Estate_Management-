@@ -1,6 +1,7 @@
 import useFetch from '../../hooks/useFetch';
 import { getDashboard } from '../../services/userService';
 import PropertyCard from '../../components/ui/PropertyCard';
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
   const { data, loading } = useFetch(getDashboard, []);
@@ -9,7 +10,10 @@ function Dashboard() {
 
   return (
     <section className="section">
-      <h1>User Dashboard</h1>
+      <div className="section-heading">
+        <h1>User Dashboard</h1>
+        <Link className="btn-outline" to="/my-bookings">My Bookings</Link>
+      </div>
       <div className="stats-grid">
         <div><strong>{data.user.name}</strong><p>{data.user.email}</p><p>Role: {data.user.role}</p></div>
         <div><strong>{data.user.savedProperties.length}</strong><p>Saved Properties</p></div>

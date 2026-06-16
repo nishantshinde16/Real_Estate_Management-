@@ -16,8 +16,11 @@ function PublicLayout() {
           <NavLink to="/about#testimonials">Testimonials</NavLink> */}
           <NavLink to="/contact">Contact</NavLink>
           <NavLink to="/properties">Properties</NavLink>
+          <NavLink to="/properties">Booking</NavLink>
           {user && <NavLink to="/dashboard">Dashboard</NavLink>}
+          {user && <NavLink to="/my-bookings">My Bookings</NavLink>}
           {isAdmin && <NavLink to="/admin">Admin</NavLink>}
+          {isAdmin && <NavLink to="/admin/bookings">Booking Admin</NavLink>}
           {user ? <button className="link-button" onClick={logout}>Logout</button> : <NavLink to="/login">Login</NavLink>}
         </nav>
       </header>
@@ -34,7 +37,9 @@ function PublicLayout() {
           <Link to="/about">About</Link>
           <Link to="/about#services">Services</Link>
           <Link to="/properties">Properties</Link>
+          <Link to="/properties">Booking</Link>
           <Link to="/contact">Contact</Link>
+          {user && <Link to="/my-bookings">My Bookings</Link>}
           {isAdmin && <Link to="/admin">Admin</Link>}
         </nav>
       </footer>
