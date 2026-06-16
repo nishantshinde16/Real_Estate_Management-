@@ -6,6 +6,7 @@ import AdminDashboard from '../pages/admin/AdminDashboard';
 import BookingManagement from '../pages/admin/BookingManagement';
 import LeadDetails from '../pages/admin/LeadDetails';
 import LeadManagement from '../pages/admin/LeadManagement';
+import FeedbackManagement from '../pages/admin/FeedbackManagement';
 import MyBookings from '../pages/client/MyBookings';
 import About from '../pages/public/About';
 import BookingConfirmation from '../pages/public/BookingConfirmation';
@@ -39,6 +40,7 @@ function AppRoutes() {
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/bookings" element={<BookingManagement />} />
           <Route path="/admin/leads" element={<LeadManagement />} />
+<Route path="/admin/feedbacks" element={<FeedbackManagement />} />
           <Route path="/admin/leads/:id" element={<LeadDetails />} />
           <Route path="/admin/properties/add" element={<AddProperty />} />
         </Route>

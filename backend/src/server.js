@@ -15,6 +15,7 @@ app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
 app.get('/api/health', (req, res) => res.json({ message: 'Real Estate API is running' }));
 app.use('/api/auth', require('./modules/auth/routes'));
+app.use("/api/feedbacks", require("../routes/feedbackRoutes"));
 app.use('/api/properties', require('./modules/properties/routes'));
 app.use('/api/inquiries', require('./modules/inquiries/routes'));
 app.use('/api/leads', require('./modules/leads/routes'));

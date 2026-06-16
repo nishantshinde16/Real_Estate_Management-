@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createLead } from '../../services/leadService';
-
+import { createFeedback } from "../../services/feedbackService";
 const aboutBlocks = [
   // ['Company Overview', 'Shilpa helps real estate teams present properties, capture qualified customers, and manage every lead from first message to conversion.'],
   ['Mission', 'To make property discovery and customer follow-up simpler, faster, and more transparent for buyers, owners, and managers.'],
@@ -24,10 +24,33 @@ function About() {
   const [lead, setLead] = useState(initialLead);
   const [status, setStatus] = useState('');
 
+  const [feedbackName, setFeedbackName] = useState("");
+const [feedbackText, setFeedbackText] = useState("");
+const [rating, setRating] = useState(5);
+
   const updateLead = (event) => {
     const { name, value } = event.target;
     setLead((current) => ({ ...current, [name]: value }));
   };
+const submitFeedback = async (e) => {
+  e.preventDefault();
+
+  try {
+    await createFeedback({
+      name: feedbackName,
+      feedback: feedbackText,
+      rating,
+    });
+
+    alert("Feedback Submitted Successfully");
+
+    setFeedbackName("");
+    setFeedbackText("");
+    setRating(5);
+  } catch (error) {
+    alert("Failed to submit feedback");
+  }
+};
 
   const submitLead = async (event) => {
     event.preventDefault();
@@ -101,6 +124,42 @@ function About() {
               </blockquote>
             ))}
           </div>
+          <form className="feedback-form" onSubmit={submitFeedback}>
+  <h3>Share Your Feedback</h3>
+
+  <input
+    type="text"
+    placeholder="Your Name"
+    value={feedbackName}
+    onChange={(e) => setFeedbackName(e.target.value)}
+    required
+  />
+
+  <label>
+    Rating
+    <select
+      value={rating}
+      onChange={(e) => setRating(Number(e.target.value))}
+    >
+      <option value="5">⭐⭐⭐⭐⭐</option>
+      <option value="4">⭐⭐⭐⭐</option>
+      <option value="3">⭐⭐⭐</option>
+      <option value="2">⭐⭐</option>
+      <option value="1">⭐</option>
+    </select>
+  </label>
+
+  <textarea
+    placeholder="Write your feedback..."
+    value={feedbackText}
+    onChange={(e) => setFeedbackText(e.target.value)}
+    required
+  />
+
+  <button className="btn" type="submit">
+    Submit Feedback
+  </button>
+</form>
         </section>
 
         <section className="lead-section" id="contact">
