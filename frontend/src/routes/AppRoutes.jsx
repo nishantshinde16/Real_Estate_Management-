@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 import { Route, Routes } from 'react-router-dom';
+import AdminLayout from '../components/layout/AdminLayout';
 import PublicLayout from '../components/layout/PublicLayout';
 import ProtectedRoute from './ProtectedRoute';
 import AddProperty from '../pages/admin/AddProperty';
@@ -44,7 +46,9 @@ function AppRoutes() {
           <Route path="/booking-confirmation/:id" element={<BookingConfirmation />} />
           <Route path="/my-bookings" element={<MyBookings />} />
         </Route>
-        <Route element={<ProtectedRoute admin />}>
+      </Route>
+      <Route element={<ProtectedRoute admin />}>
+        <Route element={<AdminLayout />}>
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/bookings" element={<BookingManagement />} />
           <Route path="/admin/leads" element={<LeadManagement />} />

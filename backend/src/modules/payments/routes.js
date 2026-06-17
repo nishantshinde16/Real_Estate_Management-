@@ -1,8 +1,10 @@
 const express = require('express');
 const { adminOnly, protect } = require('../../middleware/auth');
-const { createPayment, deletePayment, getPayments, updatePayment } = require('./controller');
+const { createPayment, deletePayment, getMyPayments, getPayments, updatePayment } = require('./controller');
 
 const router = express.Router();
+
+router.get('/my', protect, getMyPayments);
 
 router.use(protect, adminOnly);
 router.route('/').get(getPayments).post(createPayment);

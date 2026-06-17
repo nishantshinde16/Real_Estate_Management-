@@ -8,6 +8,7 @@ export const getCustomerInquiries = () => api.get('/customer-inquiries');
 
 export const createPayment = (payload) => api.post('/payments', payload);
 export const getPayments = () => api.get('/payments');
+export const getMyPayments = () => api.get('/payments/my');
 export const updatePayment = (id, payload) => api.put(`/payments/${id}`, payload);
 export const deletePayment = (id) => api.delete(`/payments/${id}`);
 
