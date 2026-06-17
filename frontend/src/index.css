@@ -1071,10 +1071,7 @@ textarea {
   .lead-detail-grid,
   .lead-filters,
   .booking-workspace,
-  .progress-tracker,
-  .admin-shell,
-  .property-table__head,
-  .property-table__row {
+  .progress-tracker {
     grid-template-columns: 1fr;
   }
 

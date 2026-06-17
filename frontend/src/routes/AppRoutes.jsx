@@ -6,7 +6,6 @@ import AdminDashboard from '../pages/admin/AdminDashboard';
 import BookingManagement from '../pages/admin/BookingManagement';
 import LeadDetails from '../pages/admin/LeadDetails';
 import LeadManagement from '../pages/admin/LeadManagement';
-import FeedbackManagement from '../pages/admin/FeedbackManagement';
 import MyBookings from '../pages/client/MyBookings';
 import About from '../pages/public/About';
 import BookingConfirmation from '../pages/public/BookingConfirmation';
