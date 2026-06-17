@@ -1152,6 +1152,25 @@ textarea {
   max-width: 760px;
 }
 
+.contact-heading {
+  margin-bottom: 28px;
+}
+
+.contact-combined {
+  gap: 24px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
+}
+
+.contact-stack {
+  display: grid;
+  gap: 20px;
+}
+
+.inquiry-panel {
+  position: sticky;
+  top: 92px;
+}
+
 .qr-placeholder {
   align-content: start;
   display: grid;

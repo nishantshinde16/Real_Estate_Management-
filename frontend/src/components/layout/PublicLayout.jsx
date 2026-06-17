@@ -16,7 +16,10 @@ function PublicLayout() {
           <NavLink to="/about#testimonials">Testimonials</NavLink> */}
           <NavLink to="/contact">Contact</NavLink>
           <NavLink to="/payment-info">Payment Info</NavLink>
+<<<<<<< Updated upstream
+=======
           <NavLink to="/inquiry">Inquiry</NavLink>
+>>>>>>> Stashed changes
           <NavLink to="/properties">Properties</NavLink>
           <NavLink to="/properties">Booking</NavLink>
           {user && <NavLink to="/dashboard">Dashboard</NavLink>}
@@ -45,7 +48,10 @@ function PublicLayout() {
           <Link to="/properties">Properties</Link>
           <Link to="/properties">Booking</Link>
           <Link to="/payment-info">Payment Info</Link>
+<<<<<<< Updated upstream
+=======
           <Link to="/inquiry">Inquiry</Link>
+>>>>>>> Stashed changes
           <Link to="/contact">Contact</Link>
           {user && <Link to="/my-bookings">My Bookings</Link>}
           {isAdmin && <Link to="/admin">Admin</Link>}
