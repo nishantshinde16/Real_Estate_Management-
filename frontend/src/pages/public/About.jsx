@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createLead } from '../../services/leadService';
 import { createFeedback } from "../../services/feedbackService";
+import { getFeedbacks } from "../../services/feedbackService";
 const aboutBlocks = [
   // ['Company Overview', 'Shilpa helps real estate teams present properties, capture qualified customers, and manage every lead from first message to conversion.'],
   ['Mission', 'To make property discovery and customer follow-up simpler, faster, and more transparent for buyers, owners, and managers.'],
@@ -26,7 +27,20 @@ function About() {
 
   const [feedbackName, setFeedbackName] = useState("");
 const [feedbackText, setFeedbackText] = useState("");
-const [rating, setRating] = useState(5);
+const [rating, setRating] = useState(0);
+
+const [feedbacks, setFeedbacks] = useState([]);
+useEffect(() => {
+  loadFeedbacks();
+}, []);
+
+const loadFeedbacks = async () => {
+  const response = await getFeedbacks();
+
+  setFeedbacks(
+    response.data.filter((item) => item.status === "Approved")
+  );
+};
 
   const updateLead = (event) => {
     const { name, value } = event.target;
@@ -116,14 +130,30 @@ const submitFeedback = async (e) => {
               <h2>Customer voices</h2>
             </div>
           </div>
+          
           <div className="testimonial-grid">
-            {testimonials.map(([name, quote]) => (
-              <blockquote key={name}>
-                <p>{quote}</p>
-                <cite>{name}</cite>
-              </blockquote>
-            ))}
-          </div>
+
+  {testimonials.map(([name, quote]) => (
+    <blockquote key={name}>
+      <p>{quote}</p>
+      <cite>{name}</cite>
+    </blockquote>
+  ))}
+
+  {feedbacks.map((item) => (
+    <blockquote key={item._id}>
+      <p>{item.feedback}</p>
+
+      <div style={{ color: "gold" }}>
+        {"⭐".repeat(item.rating)}
+      </div>
+
+      <cite>{item.name}</cite>
+    </blockquote>
+  ))}
+
+</div>
+          
           <form className="feedback-form" onSubmit={submitFeedback}>
   <h3>Share Your Feedback</h3>
 
@@ -135,12 +165,12 @@ const submitFeedback = async (e) => {
     required
   />
 <label>Rating</label>
-<div className="star-rating">
+<div className="rating-stars">
   {[1, 2, 3, 4, 5].map((star) => (
     <span
       key={star}
-      className={rating >= star ? "star active" : "star"}
       onClick={() => setRating(star)}
+      className={star <= rating ? "star active" : "star"}
     >
       ★
     </span>

@@ -117,17 +117,19 @@ textarea {
 
 .home-hero,
 .hero {
-  align-items: center;
-  background:
-    linear-gradient(90deg, rgba(10, 24, 38, 0.86), rgba(10, 24, 38, 0.38)),
-    url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80");
-  background-position: center;
-  background-size: cover;
-  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
   min-height: 620px;
   padding: 72px clamp(18px, 6vw, 90px);
+
+  color: #ffffff;
 }
+
 
 .home-hero__content {
   max-width: 720px;
@@ -1804,3 +1806,65 @@ textarea {
     padding: 26px 20px;
   }
 }
+.rating-stars {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.star {
+  font-size: 35px;
+  cursor: pointer;
+  color: white;
+  -webkit-text-stroke: 1px #999;
+  transition: all 0.2s ease;
+}
+
+.star:hover {
+  color: gold;
+}
+
+.star.active {
+  color: gold;
+  -webkit-text-stroke: 0;
+}
+/* .home-hero {
+  position: relative;
+  overflow: hidden;
+} */
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0;
+
+  transition: opacity 2s ease-in-out;
+
+  /* transform: scale(1); */
+}
+
+.hero-slide.active {
+  opacity: 1;
+
+  animation: heroZoom 6s linear;
+}
+
+.home-hero__content {
+  position: relative;
+  z-index: 10;
+}
+/* 
+@keyframes heroZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+} */

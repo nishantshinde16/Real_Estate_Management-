@@ -2,6 +2,17 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropertyCard from '../../components/ui/PropertyCard';
 import { getFeaturedProperties } from '../../services/propertyService';
+import img1 from "../../assets/img1.webp" ;
+import img2 from "../../assets/img2.webp";
+import img3 from "../../assets/img3.webp";
+import img4 from "../../assets/img4.webp";
+
+const heroImages = [
+  img1,
+  img2,
+  img3,
+  img4,
+];
 
 const starterProperties = [
   {
@@ -47,6 +58,7 @@ const categories = [
 ];
 
 function Home() {
+  const [currentImage, setCurrentImage] = useState(0);
   const [featured, setFeatured] = useState(starterProperties);
   const [filters, setFilters] = useState({
     location: '',
@@ -61,6 +73,14 @@ function Home() {
       })
       .catch(() => setFeatured(starterProperties));
   }, []);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentImage((prev) => (prev + 1) % heroImages.length);
+  }, 8000);
+
+  return () => clearInterval(interval);
+}, []);
 
   const filteredProperties = useMemo(() => {
     return featured.filter((property) => {
@@ -85,7 +105,19 @@ function Home() {
 
   return (
     <>
-      <section className="home-hero">
+    <section className="home-hero">
+  {heroImages.map((image, index) => (
+    <div
+      key={index}
+      className={`hero-slide ${index === currentImage ? "active" : ""}`}
+      style={{
+        backgroundImage: `linear-gradient(rgba(10,24,38,0.6), rgba(10,24,38,0.4)), url(${image})`,
+      }}
+    />
+  ))}
+
+  
+
         <div className="home-hero__content">
           <p className="eyebrow">Premium Property Management</p>
           <h1>Find, manage, and showcase properties with confidence.</h1>
