@@ -5,16 +5,22 @@ import AddProperty from '../pages/admin/AddProperty';
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import BookingManagement from '../pages/admin/BookingManagement';
 import FeedbackManagement from '../pages/admin/FeedbackManagement';
+import InstallmentRecords from '../pages/admin/InstallmentRecords';
+import InvoiceManagement from '../pages/admin/InvoiceManagement';
 import LeadDetails from '../pages/admin/LeadDetails';
 import LeadManagement from '../pages/admin/LeadManagement';
+import PaymentTracking from '../pages/admin/PaymentTracking';
+import ReceiptManagement from '../pages/admin/ReceiptManagement';
 import MyBookings from '../pages/client/MyBookings';
 import About from '../pages/public/About';
 import BookingConfirmation from '../pages/public/BookingConfirmation';
 import BookingPage from '../pages/public/BookingPage';
 import Dashboard from '../pages/public/Dashboard';
-import Contact from '../pages/public/Contact';
+import ContactPage from '../pages/public/ContactPage';
 import Home from '../pages/public/Home';
+import InquiryForm from '../pages/public/InquiryForm';
 import Login from '../pages/public/Login';
+import PaymentInformation from '../pages/public/PaymentInformation';
 import PropertyDetails from '../pages/public/PropertyDetails';
 import PropertyList from '../pages/public/PropertyList';
 import Register from '../pages/public/Register';
@@ -29,7 +35,9 @@ function AppRoutes() {
         <Route path="/about" element={<About />} />
         <Route path="/properties" element={<PropertyList />} />
         <Route path="/properties/:id" element={<PropertyDetails />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/payment-info" element={<PaymentInformation />} />
+        <Route path="/inquiry" element={<InquiryForm />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/bookings" element={<BookingPage />} />
@@ -41,6 +49,10 @@ function AppRoutes() {
           <Route path="/admin/bookings" element={<BookingManagement />} />
           <Route path="/admin/leads" element={<LeadManagement />} />
           <Route path="/admin/feedbacks" element={<FeedbackManagement />} />
+          <Route path="/admin/payments" element={<PaymentTracking />} />
+          <Route path="/admin/invoices" element={<InvoiceManagement />} />
+          <Route path="/admin/installments" element={<InstallmentRecords />} />
+          <Route path="/admin/receipts" element={<ReceiptManagement />} />
           <Route path="/admin/leads/:id" element={<LeadDetails />} />
           <Route path="/admin/properties/add" element={<AddProperty />} />
         </Route>

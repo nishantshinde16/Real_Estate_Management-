@@ -1140,6 +1140,43 @@ textarea {
   min-height: 120px;
   resize: vertical;
 }
+
+.finance-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.finance-form {
+  margin: 0 auto;
+  max-width: 760px;
+}
+
+.qr-placeholder {
+  align-content: start;
+  display: grid;
+  gap: 16px;
+}
+
+.qr-placeholder div {
+  align-items: center;
+  aspect-ratio: 1;
+  background:
+    linear-gradient(45deg, var(--surface-soft) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--surface-soft) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--surface-soft) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--surface-soft) 75%);
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  background-size: 20px 20px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  display: flex;
+  font-weight: 900;
+  justify-content: center;
+  max-width: 240px;
+  width: 100%;
+}
 .star-rating {
   display: flex;
   gap: 8px;

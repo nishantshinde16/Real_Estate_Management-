@@ -21,6 +21,12 @@ app.use('/api/inquiries', require('./modules/inquiries/routes'));
 app.use('/api/leads', require('./modules/leads/routes'));
 app.use('/api/bookings', require('./modules/bookings/routes'));
 app.use('/api/users', require('./modules/users/routes'));
+app.use('/api/contact-messages', require('./modules/contactMessages/routes'));
+app.use('/api/customer-inquiries', require('./modules/customerInquiries/routes'));
+app.use('/api/payments', require('./modules/payments/routes'));
+app.use('/api/invoices', require('./modules/invoices/routes'));
+app.use('/api/installments', require('./modules/installments/routes'));
+app.use('/api/receipts', require('./modules/receipts/routes'));
 
 app.use(errorHandler);
 
