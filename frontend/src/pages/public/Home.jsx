@@ -2,16 +2,16 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropertyCard from '../../components/ui/PropertyCard';
 import { getFeaturedProperties } from '../../services/propertyService';
-import img1 from "../../assets/img1.webp" ;
-import img2 from "../../assets/img2.webp";
-import img3 from "../../assets/img3.webp";
-import img4 from "../../assets/img4.webp";
+import hero1 from "../../assets/hero1.jpg";
+import hero2 from "../../assets/hero2.jpg";
+import hero3 from "../../assets/hero3.jpg";
+import hero4 from "../../assets/hero4.jpg";
 
 const heroImages = [
-  img1,
-  img2,
-  img3,
-  img4,
+    hero1,
+  hero2,
+  hero3,
+  hero4,
 ];
 
 const starterProperties = [
@@ -77,7 +77,7 @@ function Home() {
 useEffect(() => {
   const interval = setInterval(() => {
     setCurrentImage((prev) => (prev + 1) % heroImages.length);
-  }, 8000);
+  }, 9000);
 
   return () => clearInterval(interval);
 }, []);
