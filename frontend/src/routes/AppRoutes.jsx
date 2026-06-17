@@ -4,6 +4,7 @@ import ProtectedRoute from './ProtectedRoute';
 import AddProperty from '../pages/admin/AddProperty';
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import BookingManagement from '../pages/admin/BookingManagement';
+import FeedbackManagement from '../pages/admin/FeedbackManagement';
 import LeadDetails from '../pages/admin/LeadDetails';
 import LeadManagement from '../pages/admin/LeadManagement';
 import MyBookings from '../pages/client/MyBookings';
@@ -39,7 +40,7 @@ function AppRoutes() {
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/bookings" element={<BookingManagement />} />
           <Route path="/admin/leads" element={<LeadManagement />} />
-<Route path="/admin/feedbacks" element={<FeedbackManagement />} />
+          <Route path="/admin/feedbacks" element={<FeedbackManagement />} />
           <Route path="/admin/leads/:id" element={<LeadDetails />} />
           <Route path="/admin/properties/add" element={<AddProperty />} />
         </Route>

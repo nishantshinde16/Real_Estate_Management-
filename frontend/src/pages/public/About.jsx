@@ -134,20 +134,20 @@ const submitFeedback = async (e) => {
     onChange={(e) => setFeedbackName(e.target.value)}
     required
   />
-
-  <label>
-    Rating
-    <select
-      value={rating}
-      onChange={(e) => setRating(Number(e.target.value))}
+<label>Rating</label>
+<div className="star-rating">
+  {[1, 2, 3, 4, 5].map((star) => (
+    <span
+      key={star}
+      className={rating >= star ? "star active" : "star"}
+      onClick={() => setRating(star)}
     >
-      <option value="5">⭐⭐⭐⭐⭐</option>
-      <option value="4">⭐⭐⭐⭐</option>
-      <option value="3">⭐⭐⭐</option>
-      <option value="2">⭐⭐</option>
-      <option value="1">⭐</option>
-    </select>
-  </label>
+      ★
+    </span>
+  ))}
+</div>
+
+  
 
   <textarea
     placeholder="Write your feedback..."
