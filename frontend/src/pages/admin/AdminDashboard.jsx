@@ -48,9 +48,12 @@ function AdminDashboard() {
         <div className="actions">
           <Link className="btn-outline" to="/admin/leads">Manage Leads</Link>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <Link className="btn-outline" to="/admin/feedbacks">
     Manage Feedbacks
   </Link>
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
           <Link className="btn-outline" to="/admin/bookings">Manage Bookings</Link>
