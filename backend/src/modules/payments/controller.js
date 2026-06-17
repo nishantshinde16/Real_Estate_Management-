@@ -1,5 +1,7 @@
 const Payment = require('./model');
 
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 exports.createPayment = async (req, res, next) => {
   try {
     const payment = await Payment.create(req.body);
@@ -12,6 +14,22 @@ exports.createPayment = async (req, res, next) => {
 exports.getPayments = async (req, res, next) => {
   try {
     const payments = await Payment.find().sort({ paymentDate: -1, createdAt: -1 });
+    res.json(payments);
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getMyPayments = async (req, res, next) => {
+  try {
+    const nameSearch = new RegExp(`^${escapeRegExp(req.user.name)}$`, 'i');
+    const payments = await Payment.find({
+      $or: [
+        { userId: req.user._id },
+        { customerName: nameSearch },
+      ],
+    }).sort({ paymentDate: -1, createdAt: -1 });
+
     res.json(payments);
   } catch (error) {
     next(error);

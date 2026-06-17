@@ -3,6 +3,8 @@ import { useAuth } from '../../context/AuthContext';
 
 function PublicLayout() {
   const { user, isAdmin, logout } = useAuth();
+  const permissions = user?.permissions || [];
+  const hasPermission = (...names) => !user || isAdmin || names.some((name) => permissions.includes(name));
 
   return (
     <>
@@ -15,18 +17,13 @@ function PublicLayout() {
           <NavLink to="/about#why-choose-us">Why Choose Us</NavLink>
           <NavLink to="/about#testimonials">Testimonials</NavLink> */}
           <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/payment-info">Payment Info</NavLink>
-          <NavLink to="/inquiry">Inquiry</NavLink>
-          <NavLink to="/properties">Properties</NavLink>
-          <NavLink to="/properties">Booking</NavLink>
+          {hasPermission('Finance', 'Payments') && <NavLink to="/payment-info">Payment Info</NavLink>}
+          {hasPermission('Inquiries') && <NavLink to="/inquiry">Inquiry</NavLink>}
+          {hasPermission('Browse Properties', 'Properties') && <NavLink to="/properties">Properties</NavLink>}
+          {hasPermission('Create Bookings', 'Bookings') && <NavLink to="/properties">Booking</NavLink>}
           {user && <NavLink to="/dashboard">Dashboard</NavLink>}
-          {user && <NavLink to="/my-bookings">My Bookings</NavLink>}
+          {user && hasPermission('My Bookings', 'Bookings') && <NavLink to="/my-bookings">My Bookings</NavLink>}
           {isAdmin && <NavLink to="/admin">Admin</NavLink>}
-          {isAdmin && <NavLink to="/admin/bookings">Booking Admin</NavLink>}
-          {isAdmin && <NavLink to="/admin/payments">Payments</NavLink>}
-          {isAdmin && <NavLink to="/admin/invoices">Invoices</NavLink>}
-          {isAdmin && <NavLink to="/admin/installments">Installments</NavLink>}
-          {isAdmin && <NavLink to="/admin/receipts">Receipts</NavLink>}
           {user ? <button className="link-button" onClick={logout}>Logout</button> : <NavLink to="/login">Login</NavLink>}
         </nav>
       </header>
@@ -42,12 +39,12 @@ function PublicLayout() {
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
           <Link to="/about#services">Services</Link>
-          <Link to="/properties">Properties</Link>
-          <Link to="/properties">Booking</Link>
-          <Link to="/payment-info">Payment Info</Link>
-          <Link to="/inquiry">Inquiry</Link>
+          {hasPermission('Browse Properties', 'Properties') && <Link to="/properties">Properties</Link>}
+          {hasPermission('Create Bookings', 'Bookings') && <Link to="/properties">Booking</Link>}
+          {hasPermission('Finance', 'Payments') && <Link to="/payment-info">Payment Info</Link>}
+          {hasPermission('Inquiries') && <Link to="/inquiry">Inquiry</Link>}
           <Link to="/contact">Contact</Link>
-          {user && <Link to="/my-bookings">My Bookings</Link>}
+          {user && hasPermission('My Bookings', 'Bookings') && <Link to="/my-bookings">My Bookings</Link>}
           {isAdmin && <Link to="/admin">Admin</Link>}
         </nav>
       </footer>
