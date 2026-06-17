@@ -1140,3 +1140,25 @@ textarea {
   min-height: 120px;
   resize: vertical;
 }
+.star-rating {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0 20px;
+}
+
+.star {
+  font-size: 35px;
+  color: white;          /* सुरुवातीला white */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  -webkit-text-stroke: 1px #999;   /* border दिसण्यासाठी */
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+.star.active {
+  color: gold;           /* Click केल्यावर gold */
+  -webkit-text-stroke: 1px goldenrod;
+}
